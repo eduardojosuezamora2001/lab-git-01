@@ -1,48 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4f4f9;
+  --form-bg: #ffffff;
+  --border: #cccccc;
+  --text: #333333;
+  --label: #333333;
+  --placeholder: #999999;
+  --accent: #4a90e2;
+  --accent-hover: #357abd;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --input-text: #222222;
+}
+
+[data-theme="dark"] {
+  --bg: linear-gradient(135deg, #1f1c2c, #928dab);
+  --form-bg: #23212e;
+  --border: #443f5c;
+  --text: #f0eefa;
+  --label: #d1cfe2;
+  --placeholder: #8b87a3;
+  --accent: #a37bff;
+  --accent-hover: #6b5bff;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --input-bg: #2f2b3d;
+  --input-text: #f0eefa;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--form-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+  opacity: 0.85;
 }
 
 form {
-  background-color: #ffffff;
+  background-color: var(--form-bg);
   padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow);
   width: 320px;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 label {
   display: block;
   margin-bottom: 6px;
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+  color: var(--label);
+  font-size: 13px;
 }
 
 input {
   width: 100%;
   padding: 10px;
   margin-bottom: 18px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  box-sizing: border-box;
   font-size: 14px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+
+input::placeholder {
+  color: var(--placeholder);
 }
 
 input:focus {
   outline: none;
-  border-color: #4a90e2;
-  box-shadow: 0 0 4px rgba(74, 144, 226, 0.5);
+  border-color: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
 }
 
-button {
+button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
+  background-color: var(--accent);
   color: white;
   border: none;
   border-radius: 6px;
@@ -51,6 +111,6 @@ button {
   transition: background-color 0.2s;
 }
 
-button:hover {
-  background-color: #357abd;
+button[type="submit"]:hover {
+  background-color: var(--accent-hover);
 }
