@@ -59,6 +59,38 @@ body {
   opacity: 0.85;
 }
 
+.site-nav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  background-color: var(--form-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.site-nav a {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--label);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.site-nav a:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.site-nav a.active {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
 form {
   background-color: var(--form-bg);
   padding: 30px 40px;

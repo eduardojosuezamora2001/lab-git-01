@@ -240,6 +240,45 @@
     line-height: 1.7;
   }
 
+  /* Navegación entre páginas */
+  .site-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 6px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px;
+    z-index: 10;
+    font-family: var(--mono);
+  }
+
+  .site-nav a {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--ink-dim);
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .site-nav a:hover {
+    background-color: var(--accent);
+    color: #0d0e17;
+  }
+
+  .site-nav a.active {
+    background-color: var(--accent);
+    color: #0d0e17;
+  }
+
+  @media (max-width: 640px) {
+    .site-nav { position: static; margin: 20px 24px 0; width: fit-content; }
+  }
+
   /* Footer */
   footer {
     padding: 48px 0 80px;
