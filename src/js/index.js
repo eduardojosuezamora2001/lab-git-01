@@ -1,68 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
+  const inputFecha = document.getElementById('fecha_nacimiento');
+  const toggleBtn = document.getElementById('toggle-theme');
 
+  // --- Fecha máxima permitida: hoy (evita fechas de nacimiento futuras) ---
+  const hoy = new Date();
+  const maxFecha = hoy.toISOString().split('T')[0];
+  inputFecha.setAttribute('max', maxFecha);
+
+  // --- Manejo de tema (claro / oscuro) ---
+  const temaGuardado = localStorage.getItem('tema') || 'light';
+  aplicarTema(temaGuardado);
+
+  toggleBtn.addEventListener('click', () => {
+    const temaActual = document.documentElement.getAttribute('data-theme') || 'light';
+    const nuevoTema = temaActual === 'dark' ? 'light' : 'dark';
+    aplicarTema(nuevoTema);
+    localStorage.setItem('tema', nuevoTema);
+  });
+
+  function aplicarTema(tema) {
+    if (tema === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = '☀️ Modo claro';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      toggleBtn.textContent = '🌙 Modo oscuro';
+    }
+  }
+
+  // --- Validación del formulario ---
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const nombre = document.getElementById('nombre').value.trim();
     const edad = document.getElementById('edad').value;
-    const fechaNacimiento = document.getElementById('fecha_nacimiento').value;
+    const fechaNacimiento = inputFecha.value;
 
-    // Validación de nombre
     if (nombre.length < 2) {
       alert('Por favor, introduce un nombre válido (mínimo 2 caracteres).');
       return;
     }
 
-    // Validación de edad
     if (edad === '' || edad < 0 || edad > 120) {
       alert('Por favor, introduce una edad válida.');
       return;
     }
 
-    // Validación de fecha de nacimiento
     if (!fechaNacimiento) {
       alert('Por favor, selecciona tu fecha de nacimiento.');
       return;
     }
 
     const fechaSeleccionada = new Date(fechaNacimiento);
-    const hoy = new Date();
     if (fechaSeleccionada > hoy) {
       alert('La fecha de nacimiento no puede ser en el futuro.');
       return;
     }
 
-    // Si todo es válido
     console.log('Datos del formulario:', { nombre, edad, fechaNacimiento });
     alert(`Formulario enviado correctamente.\nNombre: ${nombre}\nEdad: ${edad}\nFecha de nacimiento: ${fechaNacimiento}`);
 
     form.reset();
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('form');
-  const inputFecha = document.getElementById('fecha_nacimiento');
-
-  // Fija el máximo como la fecha de hoy, siempre actualizada
-  const hoy = new Date();
-  const maxFecha = hoy.toISOString().split('T')[0]; // YYYY-MM-DD
-  inputFecha.setAttribute('max', maxFecha);
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const fechaNacimiento = inputFecha.value;
-
-    // Validación extra por si el usuario evade el calendario (ej. autocompletado)
-    if (fechaNacimiento) {
-      const fechaSeleccionada = new Date(fechaNacimiento);
-      if (fechaSeleccionada > hoy) {
-        alert('La fecha de nacimiento no puede ser en el futuro.');
-        return;
-      }
-    }
-
-    // resto de tu validación...
   });
 });
