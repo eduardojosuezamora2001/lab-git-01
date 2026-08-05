@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA y Prompts — Guía práctica</title>
+<link rel="stylesheet" href="../styles/IA-promps.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html">Formulario</a>
+    <a href="ia-y-prompts.html" class="active">IA y Prompts</a>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Guía práctica</div>
+      <h1>La IA responde<br>tan bien como<br>preguntas.</h1>
+      <p class="lede">Un prompt no es una pregunta cualquiera: es una instrucción que define contexto, tarea y forma. Esta guía cubre cómo construirlos con intención.</p>
+
+      <div class="prompt-strip">
+        <span class="caret">&gt;</span>
+        <span class="typed">Actúa como editor y corrige este párrafo, tono formal_</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="anatomia">
+      <div class="wrap">
+        <div class="section-label">01 — Fundamentos</div>
+        <h2>La anatomía de un buen prompt</h2>
+        <p>Un prompt efectivo suele contener estas cuatro piezas, en cualquier orden:</p>
+        <div class="anatomy">
+          <div class="row">
+            <strong>Rol</strong>
+            <p>Quién debe "ser" el modelo al responder — un editor, un tutor, un revisor de código.</p>
+          </div>
+          <div class="row">
+            <strong>Contexto</strong>
+            <p>La información de fondo que el modelo no puede adivinar: audiencia, restricciones, datos previos.</p>
+          </div>
+          <div class="row">
+            <strong>Tarea</strong>
+            <p>La acción concreta que se pide, en verbo imperativo: resume, traduce, clasifica, genera.</p>
+          </div>
+          <div class="row">
+            <strong>Formato</strong>
+            <p>Cómo debe verse la salida: lista, tabla, JSON, longitud máxima, tono.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnicas">
+      <div class="wrap">
+        <div class="section-label">02 — Técnicas</div>
+        <h2>Cinco técnicas que cambian el resultado</h2>
+        <div class="techniques">
+          <div class="tech-card">
+            <div class="num">01</div>
+            <h3>Few-shot</h3>
+            <p>Incluir 2–3 ejemplos de entrada/salida antes de la tarea real, para fijar el patrón esperado.</p>
+          </div>
+          <div class="tech-card">
+            <div class="num">02</div>
+            <h3>Cadena de pensamiento</h3>
+            <p>Pedir que razone paso a paso antes de dar la respuesta final, útil en tareas lógicas o matemáticas.</p>
+          </div>
+          <div class="tech-card">
+            <div class="num">03</div>
+            <h3>Restricciones explícitas</h3>
+            <p>Definir lo que NO debe hacer: sin jerga, sin inventar datos, sin exceder cierto largo.</p>
+          </div>
+          <div class="tech-card">
+            <div class="num">04</div>
+            <h3>Etiquetas XML</h3>
+            <p>Envolver secciones como &lt;contexto&gt; o &lt;tarea&gt; ayuda al modelo a separar instrucciones de contenido.</p>
+          </div>
+          <div class="tech-card">
+            <div class="num">05</div>
+            <h3>Iteración</h3>
+            <p>Tratar la primera respuesta como borrador y refinar con instrucciones puntuales, no reescribir todo.</p>
+          </div>
+          <div class="tech-card">
+            <div class="num">06</div>
+            <h3>Formato de salida</h3>
+            <p>Pedir JSON o una tabla cuando el resultado se va a procesar por código, no solo leer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ejemplo">
+      <div class="wrap">
+        <div class="section-label">03 — En la práctica</div>
+        <h2>Antes y después</h2>
+        <div class="example">
+          <div class="bad">
+            <span class="tag">Vago</span>
+            <code>Escríbeme algo sobre marketing.</code>
+          </div>
+          <div class="good">
+            <span class="tag">Específico</span>
+            <code>Actúa como especialista en marketing de contenidos.<br>
+            Escribe 3 ideas de post para Instagram sobre una cafetería de barrio,<br>
+            tono cercano, máximo 2 líneas cada una, sin emojis.</code>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      IA y Prompts — guía de referencia rápida.
+    </div>
+  </footer>
+
+</body>
+</html>
