@@ -40,3 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
     form.reset();
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+  const inputFecha = document.getElementById('fecha_nacimiento');
+
+  // Fija el máximo como la fecha de hoy, siempre actualizada
+  const hoy = new Date();
+  const maxFecha = hoy.toISOString().split('T')[0]; // YYYY-MM-DD
+  inputFecha.setAttribute('max', maxFecha);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const fechaNacimiento = inputFecha.value;
+
+    // Validación extra por si el usuario evade el calendario (ej. autocompletado)
+    if (fechaNacimiento) {
+      const fechaSeleccionada = new Date(fechaNacimiento);
+      if (fechaSeleccionada > hoy) {
+        alert('La fecha de nacimiento no puede ser en el futuro.');
+        return;
+      }
+    }
+
+    // resto de tu validación...
+  });
+});
